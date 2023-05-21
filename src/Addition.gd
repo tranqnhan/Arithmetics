@@ -37,6 +37,17 @@ func generate_problem():
 	problem_solved = false
 	$MainVB/EquationHB/Answer.text = ""
 	$MainVB/EquationHB/Question.text = str(num1) + "+" + str(num2) + "="
+	
+	var tex
+	for i in range(num1):
+		tex = TextureRect.new()
+		tex.texture = apple_tex
+		$MainVB/DisplayHB/LHB.add_child(tex)
+		
+	for i in range(num2):
+		tex = TextureRect.new()
+		tex.texture = apple_tex
+		$MainVB/DisplayHB/RHB.add_child(tex)
 
 func answer_attempt(number) -> void:
 	if (problem_solved):
@@ -52,7 +63,7 @@ func answer_attempt(number) -> void:
 		tween.tween_property(question, "position", Vector2(-40,0), .1)
 		tween.tween_property(question, "position", Vector2(40,0), .2)
 		tween.tween_property(question, "position", Vector2(0,0), .1)
-		
+		generate_problem()
 	else:
 		sound = load("res://sounds/correct.mp3")
 		
@@ -67,18 +78,8 @@ func answer_attempt(number) -> void:
 		
 		$MainVB/NextBTN.visible = true
 		$MainVB/Numpad.visible = false
-		$MainVB/DisplayHB.visible = true
 		
 		var tex
-		for i in range(num1):
-			tex = TextureRect.new()
-			tex.texture = apple_tex
-			$MainVB/DisplayHB/LHB.add_child(tex)
-			
-		for i in range(num2):
-			tex = TextureRect.new()
-			tex.texture = apple_tex
-			$MainVB/DisplayHB/RHB.add_child(tex)
 			
 		for i in range(answerkey):
 			tex = TextureRect.new()
@@ -103,7 +104,6 @@ func _on_numpad_numpad_pressed(number):
 	answer_attempt(number)
 
 func _on_next_button_down():
-	$MainVB/DisplayHB.visible = false
 	$MainVB/NextBTN.visible = false
 	$MainVB/Numpad.visible = true
 	
