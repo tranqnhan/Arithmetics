@@ -1,4 +1,4 @@
-extends GridContainer
+extends HBoxContainer
 
 signal numpad_pressed(number) # send arguments via signal
 

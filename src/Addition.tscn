@@ -72,7 +72,7 @@ columns = 3
 [node name="PlusLB" type="Label" parent="MainVB/DisplayHB"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 100
 text = "+"
 
 [node name="RHB" type="GridContainer" parent="MainVB/DisplayHB"]
@@ -83,7 +83,7 @@ columns = 3
 [node name="EqualLB" type="Label" parent="MainVB/DisplayHB"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 100
 text = "="
 
 [node name="EHB" type="GridContainer" parent="MainVB/DisplayHB"]
@@ -106,122 +106,98 @@ one_shot = true
 [node name="Question" type="Label" parent="MainVB/EquationHB"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 100
 text = "1+1="
 
 [node name="Answer" type="Label" parent="MainVB/EquationHB"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 100
 
 [node name="SoundEffect" type="AudioStreamPlayer" parent="MainVB/EquationHB"]
 
-[node name="Numpad" type="GridContainer" parent="MainVB"]
+[node name="Numpad" type="HBoxContainer" parent="MainVB"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 3
+theme_override_constants/separation = 36
 script = ExtResource("2_13v4j")
+
+[node name="0" type="Button" parent="MainVB/Numpad"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_ttow0")
+theme_override_font_sizes/font_size = 100
+text = "0"
 
 [node name="1" type="Button" parent="MainVB/Numpad"]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 100
 text = "1"
 
 [node name="2" type="Button" parent="MainVB/Numpad"]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 100
 text = "2"
 
 [node name="3" type="Button" parent="MainVB/Numpad"]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 100
 text = "3"
 
 [node name="4" type="Button" parent="MainVB/Numpad"]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 100
 text = "4"
 
 [node name="5" type="Button" parent="MainVB/Numpad"]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 100
 text = "5"
 
 [node name="6" type="Button" parent="MainVB/Numpad"]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 100
 text = "6"
 
 [node name="7" type="Button" parent="MainVB/Numpad"]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 100
 text = "7"
 
 [node name="8" type="Button" parent="MainVB/Numpad"]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 100
 text = "8"
 
 [node name="9" type="Button" parent="MainVB/Numpad"]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 100
 text = "9"
-
-[node name="10" type="Button" parent="MainVB/Numpad"]
-layout_mode = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
-disabled = true
-button_mask = 0
-shortcut_feedback = false
-shortcut_in_tooltip = false
-flat = true
-
-[node name="0" type="Button" parent="MainVB/Numpad"]
-layout_mode = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
-text = "0"
-
-[node name="12" type="Button" parent="MainVB/Numpad"]
-layout_mode = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 42
-disabled = true
-button_mask = 0
-shortcut_feedback = false
-shortcut_in_tooltip = false
-flat = true
 
 [node name="NextBTN" type="Button" parent="MainVB"]
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.792157, 0, 1)
 theme_override_fonts/font = ExtResource("1_ttow0")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 100
 text = "NEXT"
 flat = true
 
