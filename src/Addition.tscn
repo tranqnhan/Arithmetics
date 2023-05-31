@@ -97,7 +97,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="MainVB/EquationHB"]
-position = Vector2(69, 20)
 emitting = false
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_284dl")

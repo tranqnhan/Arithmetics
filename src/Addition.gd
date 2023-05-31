@@ -11,6 +11,8 @@ var problem_solved = false
 
 var apple_tex = preload("res://images/apple.png")
 
+var texs = [apple_tex]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -25,6 +27,15 @@ func _input(_ev):
 			break;
 
 func generate_problem():
+	for c in $MainVB/DisplayHB/LHB.get_children():
+		c.free()
+		
+	for c in $MainVB/DisplayHB/RHB.get_children():
+		c.free()
+	
+	for c in $MainVB/DisplayHB/EHB.get_children():
+		c.free()
+	
 	num1 = randi() % 10
 	num2 = randi() % 10
 	answerkey = num1 + num2
@@ -69,22 +80,23 @@ func answer_attempt(number) -> void:
 		
 		problem_solved = true
 		#DisplayServer.tts_speak("is correct", voice_id)
-		
-		$MainVB/EquationHB/Answer.text = str(answerkey)
-		var eqpos = $MainVB/EquationHB.position
-		var eqsize = $MainVB/EquationHB.size
-		$MainVB/EquationHB/GPUParticles2D.position = eqpos + eqsize / 2
-		$MainVB/EquationHB/GPUParticles2D.restart()
-		
 		$MainVB/NextBTN.visible = true
 		$MainVB/Numpad.visible = false
 		
-		var tex
-			
+		var tex_rect
+		var tex = texs[randi() % len(texs)]
 		for i in range(answerkey):
-			tex = TextureRect.new()
-			tex.texture = apple_tex
-			$MainVB/DisplayHB/EHB.add_child(tex)
+			tex_rect = TextureRect.new()
+			tex_rect.texture = tex
+			$MainVB/DisplayHB/EHB.add_child(tex_rect)
+			
+		$MainVB/EquationHB/Answer.text = str(answerkey)
+		
+		var eqsize = $MainVB/EquationHB.size
+		$MainVB/EquationHB/GPUParticles2D.position = eqsize / 2
+		$MainVB/EquationHB/GPUParticles2D.restart()
+		
+
 		
 		#Wait 1 seconds
 		#await get_tree().create_timer(1).timeout
@@ -106,14 +118,5 @@ func _on_numpad_numpad_pressed(number):
 func _on_next_button_down():
 	$MainVB/NextBTN.visible = false
 	$MainVB/Numpad.visible = true
-	
-	for c in $MainVB/DisplayHB/LHB.get_children():
-		c.free()
-		
-	for c in $MainVB/DisplayHB/RHB.get_children():
-		c.free()
-	
-	for c in $MainVB/DisplayHB/EHB.get_children():
-		c.free()
 	
 	generate_problem()
