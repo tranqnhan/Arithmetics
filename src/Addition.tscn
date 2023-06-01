@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" path="res://SuperBubble.tres" id="1_ttow0"]
 [ext_resource type="Script" path="res://Addition.gd" id="1_w64up"]
 [ext_resource type="Script" path="res://Numpad.gd" id="2_13v4j"]
-[ext_resource type="Texture2D" uid="uid://dpm1fu56d113m" path="res://addons/kenney_particle_pack/star_04.png" id="4_ktk5o"]
+[ext_resource type="Texture2D" uid="uid://rh63ic4uvws0" path="res://images/star_06.png" id="4_par08"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_284dl"]
 particle_flag_disable_z = true
@@ -100,7 +100,7 @@ size_flags_vertical = 4
 emitting = false
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_284dl")
-texture = ExtResource("4_ktk5o")
+texture = ExtResource("4_par08")
 one_shot = true
 
 [node name="Question" type="Label" parent="MainVB/EquationHB"]
