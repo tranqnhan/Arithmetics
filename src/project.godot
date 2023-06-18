@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Arithmetics"
-run/main_scene="res://MainMenu.tscn"
+run/main_scene="res://Increment.tscn"
 config/features=PackedStringArray("4.0")
 run/max_fps=30
 run/low_processor_mode=true
