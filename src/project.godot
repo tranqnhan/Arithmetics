@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="EduPrep"
-run/main_scene="res://Addition.tscn"
+config/name="Arithmetics"
+run/main_scene="res://MainMenu.tscn"
 config/features=PackedStringArray("4.0")
 run/max_fps=30
 run/low_processor_mode=true
@@ -19,8 +19,9 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/viewport_width=1200
-window/size/viewport_height=600
+window/size/viewport_width=2000
+window/size/viewport_height=1200
+window/stretch/mode="canvas_items"
 
 [gui]
 

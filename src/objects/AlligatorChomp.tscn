@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://5ku1xiete1ss"]
+
+[ext_resource type="Texture2D" uid="uid://cl5meyhyr5tkx" path="res://images/alligator_mouth.png" id="1_4ch25"]
+[ext_resource type="Script" path="res://objects/AlligatorChomp.gd" id="1_eoyka"]
+[ext_resource type="Texture2D" uid="uid://becq7tpdgwld1" path="res://images/alligator_head.png" id="1_xj1j6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ifxa"]
+size = Vector2(78.0938, 764.82)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lu1nh"]
+a = Vector2(0, -1100)
+b = Vector2(0, 90)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_l8svx"]
+a = Vector2(0, 90)
+b = Vector2(1100, 90)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hed7a"]
+a = Vector2(1100, -1100)
+b = Vector2(1100, 90)
+
+[node name="AlligatorChomp" type="Node2D"]
+script = ExtResource("1_eoyka")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(567.5, 7)
+scale = Vector2(0.985833, 1)
+texture = ExtResource("1_4ch25")
+
+[node name="Head" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Head"]
+texture_filter = 1
+position = Vector2(570, -1)
+texture = ExtResource("1_xj1j6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+position = Vector2(698, 80)
+rotation = 1.52018
+shape = SubResource("RectangleShape2D_1ifxa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_lu1nh")
+
+[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_l8svx")
+
+[node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_hed7a")
+
+[connection signal="body_entered" from="Head" to="." method="_on_head_body_entered"]

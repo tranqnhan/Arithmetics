@@ -1,0 +1,113 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceku5bdb5gk5h"]
+
+[ext_resource type="Script" path="res://Increment.gd" id="1_coi6s"]
+[ext_resource type="FontFile" path="res://SuperBubble.tres" id="1_tin7v"]
+[ext_resource type="Texture2D" uid="uid://6wilvtgdr0kr" path="res://images/backgrounds/4.jpg" id="2_tno31"]
+[ext_resource type="PackedScene" uid="uid://5ku1xiete1ss" path="res://objects/AlligatorChomp.tscn" id="4_hil8o"]
+
+[node name="Increment" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_coi6s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tno31")
+
+[node name="AlligatorChomp" parent="." instance=ExtResource("4_hil8o")]
+position = Vector2(406, 1042)
+
+[node name="Group" type="Node2D" parent="."]
+
+[node name="Particles" type="Node" parent="Group"]
+
+[node name="Objects" type="Node" parent="Group"]
+
+[node name="AppleSpawn" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -294.5
+offset_right = 294.5
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_tin7v")
+theme_override_font_sizes/font_size = 50
+text = "Have Some Apples!"
+
+[node name="MainVB" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -84.5
+offset_right = 106.0
+offset_bottom = 84.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TotalHB" type="HBoxContainer" parent="MainVB"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MainVB/TotalHB"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0.682353, 0.184314, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_tin7v")
+theme_override_font_sizes/font_size = 100
+text = "0"
+
+[node name="IncrementHB" type="HBoxContainer" parent="MainVB"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MinusOne" type="Button" parent="MainVB/IncrementHB"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tin7v")
+theme_override_font_sizes/font_size = 70
+text = "-1"
+
+[node name="PlusOne" type="Button" parent="MainVB/IncrementHB"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tin7v")
+theme_override_font_sizes/font_size = 70
+text = "+1"
+
+[node name="Chomp" type="Button" parent="MainVB"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_tin7v")
+theme_override_font_sizes/font_size = 80
+text = "CHOMP!"
+
+[node name="SideVB" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="StaggeredUpdate" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="on_teeth" from="AlligatorChomp" to="." method="_on_alligator_chomp_on_teeth"]
+[connection signal="pressed" from="MainVB/IncrementHB/MinusOne" to="." method="_on_minus_one_pressed"]
+[connection signal="pressed" from="MainVB/IncrementHB/PlusOne" to="." method="_on_plus_one_pressed"]
+[connection signal="pressed" from="MainVB/Chomp" to="." method="_on_chomp_pressed"]
+[connection signal="timeout" from="StaggeredUpdate" to="." method="_on_staggered_update_timeout"]

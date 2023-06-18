@@ -72,9 +72,9 @@ func answer_attempt(number) -> void:
 		var question = $MainVB/EquationHB/Question
 		var tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_SINE)
 		tween.tween_property(question, "position", Vector2(-40,0), .1)
-		tween.tween_property(question, "position", Vector2(40,0), .2)
-		tween.tween_property(question, "position", Vector2(0,0), .1)
-		generate_problem()
+		tween.chain().tween_property(question, "position", Vector2(40,0), .2)
+		tween.chain().tween_property(question, "position", Vector2(0,0), .1)
+		#generate_problem()
 	else:
 		sound = load("res://sounds/correct.mp3")
 		
@@ -88,19 +88,14 @@ func answer_attempt(number) -> void:
 		for i in range(answerkey):
 			tex_rect = TextureRect.new()
 			tex_rect.texture = tex
+			tex_rect.size = tex_rect.size * 2
 			$MainVB/DisplayHB/EHB.add_child(tex_rect)
 			
 		$MainVB/EquationHB/Answer.text = str(answerkey)
 		
 		var eqsize = $MainVB/EquationHB.size
-		$MainVB/EquationHB/GPUParticles2D.position = eqsize / 2
-		$MainVB/EquationHB/GPUParticles2D.restart()
-		
-
-		
-		#Wait 1 seconds
-		#await get_tree().create_timer(1).timeout
-		
+		$MainVB/EquationHB/DefaultCircularParticle.position = eqsize / 2
+		$MainVB/EquationHB/DefaultCircularParticle.restart()
 	
 	if ($MainVB/EquationHB/SoundEffect.playing):
 		$MainVB/EquationHB/SoundEffect.stop()
